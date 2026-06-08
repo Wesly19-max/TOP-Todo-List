@@ -1,3 +1,4 @@
+// a place to store todos
 let todoList = [];
 
 class TodoItem {
@@ -10,15 +11,25 @@ class TodoItem {
   }
 
   //toggling todos as complete/incomplete
-
+  toggleComplete() {
+    this.isComplete = !this.isComplete;
+  }
   //toggling todo importance
-
+  toggleImportance() {
+    this.isImportant = !this.isImportant;
+  }
   //changing due date 
-
+  changeDueDate(newDueDate) {
+    this.dueDate = newDueDate;
+  }
   //changing description
-
+  changeDescription(newDescription) {
+    this.description = newDescription;
+  }
   //changing title
-
+  changeTitle(newTitle) {
+    this.title = newTitle;
+  }
   //delete todo item
 
 }
@@ -34,3 +45,12 @@ todoList.push(task2);
 for (let i =0;i<todoList.length;i++) {
   console.log(todoList[i]);
 }
+
+task1.toggleComplete();
+console.log(task1)
+task1.changeDescription("new description haha");
+console.log(task1);
+task1.changeDueDate("06162006");
+console.log(task1);
+task1.changeTitle("project1");
+console.log(task1)

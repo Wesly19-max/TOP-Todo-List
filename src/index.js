@@ -3,6 +3,7 @@ let todoList = [];
 
 class TodoItem {
   constructor(title,description,dueDate,isImportant,isComplete) {
+    this.id = crypto.randomUUID();
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
@@ -30,8 +31,8 @@ class TodoItem {
   changeTitle(newTitle) {
     this.title = newTitle;
   }
-  //delete todo item
-
+  
+  
 }
 
 //add a todo item 
@@ -46,11 +47,18 @@ for (let i =0;i<todoList.length;i++) {
   console.log(todoList[i]);
 }
 
-task1.toggleComplete();
+//delete todo item (task 1)
+todoList = todoList.filter((todoItem) => {
+  return !(todoItem.id === task1.id);
+})
+
+console.log(todoList)
+
+/* task1.toggleComplete();
 console.log(task1)
 task1.changeDescription("new description haha");
 console.log(task1);
 task1.changeDueDate("06162006");
 console.log(task1);
 task1.changeTitle("project1");
-console.log(task1)
+console.log(task1) */

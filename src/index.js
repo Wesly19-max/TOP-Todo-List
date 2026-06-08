@@ -14,22 +14,27 @@ class TodoItem {
   //toggling todos as complete/incomplete
   toggleComplete() {
     this.isComplete = !this.isComplete;
+    displayTodos();
   }
   //toggling todo importance
   toggleImportance() {
     this.isImportant = !this.isImportant;
+    displayTodos();
   }
   //changing due date 
   changeDueDate(newDueDate) {
     this.dueDate = newDueDate;
+    displayTodos();
   }
   //changing description
   changeDescription(newDescription) {
     this.description = newDescription;
+    displayTodos();
   }
   //changing title
   changeTitle(newTitle) {
     this.title = newTitle;
+    displayTodos();
   }
   
   

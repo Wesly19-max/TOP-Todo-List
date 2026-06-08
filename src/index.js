@@ -43,9 +43,14 @@ let task2 = new TodoItem("task 2", "haircut","06232006",true,false);
 todoList.push(task2);
 
 //show all todos
-for (let i =0;i<todoList.length;i++) {
-  console.log(todoList[i]);
+function displayTodos() {
+  for (let i =0;i<todoList.length;i++) {
+    console.log(`${todoList[i].isComplete? '[X]' : '[ ]'} ${todoList[i].title}. Description: ${todoList[i].description}. Due Date: ${todoList[i].dueDate}. ${todoList[i].isImportant? 'Important':'Not Important'} `);
+  }
 }
+
+console.log(displayTodos())
+
 
 //delete todo item (task 1)
 todoList = todoList.filter((todoItem) => {

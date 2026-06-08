@@ -1,5 +1,13 @@
 # TOP_TodoList
 
+Requirements v2
+- [X ] it has a function to display todos
+- [ ] it has a function to add a todo
+- [ ] it has a function to edit a todo
+- [ ] it has a function to remove a todo
+
+
+
 Requirements v1 
 - [X] a place to store a todos
 - [X] a way to add a todo item

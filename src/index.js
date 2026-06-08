@@ -37,6 +37,16 @@ class TodoItem {
     displayTodos();
   }
   
+    //delete todo item instance
+  removeItem() {
+    todoList = todoList.filter((todoItem) => {
+        return !(todoItem.id === this.id);
+      });
+    displayTodos();
+  }
+  
+
+
   
 }
 
@@ -48,8 +58,10 @@ function addTodoItem(title,description,dueDate,isImportant,isComplete) {
 }
 
 addTodoItem("task 1", "do it now","06222006",true,false);
-//addTodoItem("task 2", "haircut","06232006",true,false);
-//addTodoItem("buy grocery","milk","07-28-2027",false,false);
+addTodoItem("task 2", "haircut","06232006",true,false);
+addTodoItem("buy grocery","milk","07-28-2027",false,false);
+todoList[0].removeItem();
+
 
 //show all todos
 function displayTodos() {
@@ -61,12 +73,7 @@ function displayTodos() {
 console.log(displayTodos())
 
 
-//delete todo item (task 1)
-todoList = todoList.filter((todoItem) => {
-  return !(todoItem.id === task1.id);
-})
 
-console.log(todoList)
 
 /* task1.toggleComplete();
 console.log(task1)

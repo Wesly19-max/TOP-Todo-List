@@ -3,8 +3,8 @@
 Requirements v2
 - [X] it has a function to display todos
 - [X] it has a function to add a todo
-- [ ] it has a function to edit a todo
-- [ ] it has a function to remove a todo
+- [X] it has a function to edit a todo
+- [X] it has a function to remove a todo
 
 
 

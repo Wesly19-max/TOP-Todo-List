@@ -36,11 +36,15 @@ class TodoItem {
 }
 
 //add a todo item 
-let task1 = new TodoItem("task 1", "do it now","06222006",true,false);
-todoList.push(task1);
+function addTodoItem(title,description,dueDate,isImportant,isComplete) {
+  let newTask = new TodoItem(title,description,dueDate,isImportant,isComplete);
+  todoList.push(newTask);
+  displayTodos();
+}
 
-let task2 = new TodoItem("task 2", "haircut","06232006",true,false);
-todoList.push(task2);
+addTodoItem("task 1", "do it now","06222006",true,false);
+//addTodoItem("task 2", "haircut","06232006",true,false);
+//addTodoItem("buy grocery","milk","07-28-2027",false,false);
 
 //show all todos
 function displayTodos() {

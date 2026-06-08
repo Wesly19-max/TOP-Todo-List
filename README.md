@@ -1,1 +1,12 @@
-# TOP_Restaurant-Page
+# TOP_TodoList
+
+Requirements v1 
+- [ ] a way to store a todos
+- [ ] a way to add a todo item
+- [ ] a way to view all todo items
+- [ ] a way to edit a todo item
+- [ ] a way to delete a todo item
+
+unfamilliar concepts:
+- local storage
+- how date-fns,an npm library can be used?

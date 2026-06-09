@@ -1,6 +1,10 @@
-// a place to store todos
-let todoList = [];
 
+
+
+
+let projectList = []
+
+//todo items are objects
 class TodoItem {
   constructor(title,description,dueDate,isImportant,isComplete) {
     this.id = crypto.randomUUID();
@@ -39,7 +43,7 @@ class TodoItem {
   
     //delete todo item instance
   removeItem() {
-    todoList = todoList.filter((todoItem) => {
+    defaultProject = defaultProject.filter((todoItem) => {
         return !(todoItem.id === this.id);
       });
     displayTodos();
@@ -50,27 +54,52 @@ class TodoItem {
   
 }
 
+//add a project
+class Project {
+  taskList = [];
+  constructor(projectName) {
+    this.projectName = projectName;
+  }
+
+  //function to add todo item
+  addTodoItem(title,description,dueDate,isImportant,isComplete) {
+    let newTask = new TodoItem(title,description,dueDate,isImportant,isComplete)
+    this.taskList.push(newTask)
+    //displayTodos()
+  }
+}
+
+function addProject(projectName) {
+  let newProject = new Project(projectName);
+  projectList.push(newProject);
+
+}
+
 //add a todo item 
 function addTodoItem(title,description,dueDate,isImportant,isComplete) {
   let newTask = new TodoItem(title,description,dueDate,isImportant,isComplete);
-  todoList.push(newTask);
-  displayTodos();
+  Object.assign(defaultProject,newTask);
+  //displayTodos();
 }
+
+//default project is the project where todo items go to that doesn't have a specific project
+addProject("Default");
+
 
 addTodoItem("task 1", "do it now","06222006",true,false);
 addTodoItem("task 2", "haircut","06232006",true,false);
 addTodoItem("buy grocery","milk","07-28-2027",false,false);
-todoList[0].removeItem();
+// defaultProject[0].removeItem();
 
 
 //show all todos
-function displayTodos() {
-  for (let i =0;i<todoList.length;i++) {
-    console.log(`${todoList[i].isComplete? '[X]' : '[ ]'} ${todoList[i].title}. Description: ${todoList[i].description}. Due Date: ${todoList[i].dueDate}. ${todoList[i].isImportant? 'Important':'Not Important'} `);
+/* function displayTodos() {
+  for (let i =0;i<defaultProject.length;i++) {
+    console.log(`${defaultProject[i].isComplete? '[X]' : '[ ]'} ${defaultProject[i].title}. Description: ${defaultProject[i].description}. Due Date: ${defaultProject[i].dueDate}. ${defaultProject[i].isImportant? 'Important':'Not Important'} `);
   }
 }
 
-console.log(displayTodos())
+console.log(displayTodos()) */
 
 
 

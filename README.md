@@ -1,5 +1,13 @@
 # TOP_TodoList
 
+Requirements v3
+- [X] a way to add projects
+- [ ] a way to delete projects
+- [ ] a way to edit projects
+- [ ] a way to add todos inside projects
+- [ ] refactor display todos function to include project list and their tasks
+
+
 Requirements v2
 - [X] it has a function to display todos
 - [X] it has a function to add a todo

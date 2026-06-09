@@ -75,15 +75,17 @@ function addProject(projectName) {
 
 }
 
-//add a todo item 
+//default project is the project where todo items go to that doesn't have a specific project
+addProject("Default");
+
+//add a todo item to default project if you didn't add it from project
 function addTodoItem(title,description,dueDate,isImportant,isComplete) {
   let newTask = new TodoItem(title,description,dueDate,isImportant,isComplete);
-  Object.assign(defaultProject,newTask);
+  projectList[0].taskList.push(newTask)
   //displayTodos();
 }
 
-//default project is the project where todo items go to that doesn't have a specific project
-addProject("Default");
+
 
 
 addTodoItem("task 1", "do it now","06222006",true,false);

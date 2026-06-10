@@ -41,18 +41,19 @@ class TodoItem {
     displayTodos();
   }
   
-    //delete todo item instance
+  //delete todo item instance
   removeItem() {
-    defaultProject = defaultProject.filter((todoItem) => {
-        return !(todoItem.id === this.id);
-      });
-    displayTodos();
-  }
-  
-
-
-  
+    projectList.forEach((project) => {
+        project.taskList = project.taskList.filter((todoItem) => todoItem.id!== this.id);
+    })
+    };
+    //displayTodos();
 }
+  
+
+
+  
+
 
 //add a project
 class Project {
@@ -67,6 +68,10 @@ class Project {
     this.taskList.push(newTask)
     //displayTodos()
   }
+
+  //delete project
+
+  //edit project name
 }
 
 function addProject(projectName) {

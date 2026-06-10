@@ -59,6 +59,7 @@ class TodoItem {
 class Project {
   taskList = [];
   constructor(projectName) {
+    this.id = crypto.randomUUID();
     this.projectName = projectName;
   }
 
@@ -70,6 +71,9 @@ class Project {
   }
 
   //delete project
+  removeProject() {
+    projectList = projectList.filter((project)=> project.id !== this.id)
+  }
 
   //edit project name
 }

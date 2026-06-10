@@ -2,7 +2,7 @@
 
 Requirements v3
 - [X] a way to add projects
-- [ ] a way to delete projects
+- [X] a way to delete projects
 - [ ] a way to edit projects
 - [X] a way to add todos inside projects
 - [ ] refactor display todos function to include project list and their tasks

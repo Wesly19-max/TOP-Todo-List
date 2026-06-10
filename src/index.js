@@ -1,7 +1,4 @@
 
-
-
-
 let projectList = []
 
 //todo items are objects
@@ -46,12 +43,10 @@ class TodoItem {
     projectList.forEach((project) => {
         project.taskList = project.taskList.filter((todoItem) => todoItem.id!== this.id);
     })
-    };
-    //displayTodos();
+    displayTodos();
+  };
+
 }
-  
-
-
   
 
 
@@ -67,7 +62,7 @@ class Project {
   addTodoItem(title,description,dueDate,isImportant,isComplete) {
     let newTask = new TodoItem(title,description,dueDate,isImportant,isComplete)
     this.taskList.push(newTask)
-    //displayTodos()
+    displayTodos()
   }
 
   //delete project
@@ -76,6 +71,9 @@ class Project {
   }
 
   //edit project name
+  editProject(projectName) {
+    this.projectName = projectName;
+  }
 }
 
 function addProject(projectName) {
@@ -91,7 +89,7 @@ addProject("Default");
 function addTodoItem(title,description,dueDate,isImportant,isComplete) {
   let newTask = new TodoItem(title,description,dueDate,isImportant,isComplete);
   projectList[0].taskList.push(newTask)
-  //displayTodos();
+  displayTodos();
 }
 
 
@@ -104,13 +102,21 @@ addTodoItem("buy grocery","milk","07-28-2027",false,false);
 
 
 //show all todos
-/* function displayTodos() {
-  for (let i =0;i<defaultProject.length;i++) {
-    console.log(`${defaultProject[i].isComplete? '[X]' : '[ ]'} ${defaultProject[i].title}. Description: ${defaultProject[i].description}. Due Date: ${defaultProject[i].dueDate}. ${defaultProject[i].isImportant? 'Important':'Not Important'} `);
-  }
+function displayTodos() {
+  projectList.forEach((project) => {
+    console.log(project.projectName);
+    project.taskList.forEach((todoItem) => {
+      console.log(`${todoItem.isComplete? '[X]' : '[ ]'} ${todoItem.title}. Description: ${todoItem.description}. Due Date: ${todoItem.dueDate}. ${todoItem.isImportant? 'Important':'Not Important'} `);
+    })
+  })
+
 }
 
-console.log(displayTodos()) */
+
+    
+  
+
+console.log(displayTodos()) 
 
 
 

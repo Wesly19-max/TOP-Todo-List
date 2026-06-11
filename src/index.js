@@ -4,11 +4,11 @@ let projectList = []
 
 //todo items are objects
 class TodoItem {
-  constructor(title,description,dueDate,isImportant,isComplete) {
+  constructor(title,description,year,month,day,isImportant,isComplete) {
     this.id = crypto.randomUUID();
     this.title = title;
     this.description = description;
-    this.dueDate = dueDate;
+    this.dueDate = format(new Date(year,month-1,day),"yyyy-MM-dd");
     this.isImportant = isImportant;
     this.isComplete = isComplete;
   }
@@ -52,8 +52,8 @@ class Project {
   }
 
   //function to add todo item
-  addTodoItem(title,description,dueDate,isImportant,isComplete) {
-    let newTask = new TodoItem(title,description,dueDate,isImportant,isComplete)
+  addTodoItem(title,description,year,month,day,isImportant,isComplete) {
+    let newTask = new TodoItem(title,description,year,month,day,isImportant,isComplete)
     this.taskList.push(newTask)
     displayTodos()
   }
@@ -80,8 +80,8 @@ function addProject(projectName) {
 addProject("Default");
 
 //add a todo item to default project if you didn't add it from project
-function addTodoItem(title,description,dueDate,isImportant,isComplete) {
-  let newTask = new TodoItem(title,description,dueDate,isImportant,isComplete);
+function addTodoItem(title,description,year,month,day,isImportant,isComplete) {
+  let newTask = new TodoItem(title,description,year,month,day,isImportant,isComplete);
   projectList[0].taskList.push(newTask)
   displayTodos();
 }
@@ -89,9 +89,9 @@ function addTodoItem(title,description,dueDate,isImportant,isComplete) {
 
 
 
-addTodoItem("task 1", "do it now",format(new Date(2026,5,22), "yyyy-MM-dd"),true,false);
-addTodoItem("task 2", "haircut",format(new Date(2026,5,23), "yyyy-MM-dd"),true,false);
-addTodoItem("buy grocery","milk",format(new Date(2026,5,24), "yyyy-MM-dd"),false,false);
+addTodoItem("task 1", "do it now",2026,5,22,true,false);
+addTodoItem("task 2", "haircut",2026,5,23,true,false);
+addTodoItem("buy grocery","milk",2026,5,24,false,false);
 // defaultProject[0].removeItem();
 
 

@@ -4,6 +4,7 @@ Requirements v4
 - [X] learn about how date-fns can be integrated in your project
 - [ ]start with ui functionality
 - [ ] integrate local storage in your project
+- [X] create separate js modules
 
 Requirements v3
 - [X] a way to add projects
@@ -30,6 +31,7 @@ Requirements v1
 
 ideas:
 - [X] refactor the edit functionality on todo item class to avoid repetition
+- [ ] how to keep the footer at the very bottom of the screen?
 
 unfamilliar concepts:
 - local storage

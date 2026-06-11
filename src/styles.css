@@ -2,6 +2,18 @@
   font-family: monospace;
 }
 
+body {
+  min-height:100vh;
+  margin:0;
+  display:grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+header {
+  min-height:50px;
+}
+
+
 /* 1. Use a more-intuitive box-sizing model */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -66,13 +78,15 @@ main {
   grid-template-columns: 1fr 3fr;
 }
 .project-name-card {
-  background-color: blue;
-  
+  border:black solid 1px;
+  height:50px;
+  width:75px;
 }
 
 .main {
-  background-color: yellow;
+  border:1px solid red;
 }
+
 
 .project {
   display:flex;

@@ -34,7 +34,7 @@ Requirements v1
 
 ideas:
 - [X] refactor the edit functionality on todo item class to avoid repetition
-- [ ] how to keep the footer at the very bottom of the screen?
+- [X] how to keep the footer at the very bottom of the screen?
 
 unfamilliar concepts:
 - local storage

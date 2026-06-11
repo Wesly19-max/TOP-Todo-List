@@ -2,7 +2,10 @@
 
 Requirements v4
 - [X] learn about how date-fns can be integrated in your project
-- [ ]start with ui functionality
+- [X] view all projects
+- [ ]view all todos in each project
+- [ ]add functionality that expands todo item when you edit it
+- [ ]delete a todo
 - [ ] integrate local storage in your project
 - [X] create separate js modules
 

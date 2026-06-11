@@ -1,6 +1,6 @@
 import {format} from "date-fns";
 
-let projectList = []
+export let projectList = []
 
 //todo items are objects
 class TodoItem {
@@ -78,6 +78,7 @@ function addProject(projectName) {
 
 //default project is the project where todo items go to that doesn't have a specific project
 addProject("Default");
+addProject("school")
 
 //add a todo item to default project if you didn't add it from project
 function addTodoItem(title,description,year,month,day,isImportant,isComplete) {

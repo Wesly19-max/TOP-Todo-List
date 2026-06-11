@@ -74,3 +74,12 @@ main {
   background-color: yellow;
 }
 
+.project {
+  display:flex;
+  justify-content: space-between;
+  margin-top:10px;
+}
+
+.left-project-content {
+  display:flex;
+}

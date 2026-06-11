@@ -1,5 +1,10 @@
 # TOP_TodoList
 
+Requirements v4
+- [X] learn about how date-fns can be integrated in your project
+- [ ]start with ui functionality
+- [ ] integrate local storage in your project
+
 Requirements v3
 - [X] a way to add projects
 - [X] a way to delete projects
@@ -24,7 +29,7 @@ Requirements v1
 - [X] a way to delete a todo item
 
 ideas:
-- refactor the edit functionality on todo item class to avoid repetition
+- [X] refactor the edit functionality on todo item class to avoid repetition
 
 unfamilliar concepts:
 - local storage

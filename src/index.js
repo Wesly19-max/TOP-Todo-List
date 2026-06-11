@@ -1,3 +1,4 @@
+import {format} from "date-fns";
 
 let projectList = []
 
@@ -22,19 +23,11 @@ class TodoItem {
     this.isImportant = !this.isImportant;
     displayTodos();
   }
-  //changing due date 
-  changeDueDate(newDueDate) {
-    this.dueDate = newDueDate;
-    displayTodos();
-  }
-  //changing description
-  changeDescription(newDescription) {
-    this.description = newDescription;
-    displayTodos();
-  }
-  //changing title
-  changeTitle(newTitle) {
+
+  edit(newTitle,newDescription,year,month,day) {
     this.title = newTitle;
+    this.description = newDescription;
+    this.dueDate = format(new Date(year,month-1,day),"yyyy-MM-dd");
     displayTodos();
   }
   
@@ -79,6 +72,7 @@ class Project {
 function addProject(projectName) {
   let newProject = new Project(projectName);
   projectList.push(newProject);
+  displayTodos();
 
 }
 
@@ -95,9 +89,9 @@ function addTodoItem(title,description,dueDate,isImportant,isComplete) {
 
 
 
-addTodoItem("task 1", "do it now","06222006",true,false);
-addTodoItem("task 2", "haircut","06232006",true,false);
-addTodoItem("buy grocery","milk","07-28-2027",false,false);
+addTodoItem("task 1", "do it now",format(new Date(2026,5,22), "yyyy-MM-dd"),true,false);
+addTodoItem("task 2", "haircut",format(new Date(2026,5,23), "yyyy-MM-dd"),true,false);
+addTodoItem("buy grocery","milk",format(new Date(2026,5,24), "yyyy-MM-dd"),false,false);
 // defaultProject[0].removeItem();
 
 

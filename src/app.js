@@ -79,6 +79,7 @@ function addProject(projectName) {
 //default project is the project where todo items go to that doesn't have a specific project
 addProject("Default");
 addProject("school")
+addProject("exercise")
 
 //add a todo item to default project if you didn't add it from project
 function addTodoItem(title,description,year,month,day,isImportant,isComplete) {
@@ -93,6 +94,7 @@ function addTodoItem(title,description,year,month,day,isImportant,isComplete) {
 addTodoItem("task 1", "do it now",2026,5,22,true,false);
 addTodoItem("task 2", "haircut",2026,5,23,true,false);
 addTodoItem("buy grocery","milk",2026,5,24,false,false);
+projectList[2].addTodoItem("run","for 5 days",2026,6,29,false,false);
 // defaultProject[0].removeItem();
 
 

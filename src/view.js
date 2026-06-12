@@ -1,6 +1,98 @@
 import { projectList } from "./app.js";
 
-//view all project when page loads
-//function viewProjects() {
+export function viewProjects() {
+  projectList.forEach((projectItem) => {
+  const project = document.createElement("div")
+  project.classList.add("project")
+  project.dataset.id = projectItem.id;
 
-//}
+  const leftProjectContent = document.createElement("span")
+  leftProjectContent.classList.add("left-project-content")
+  const projectImage = document.createElement("img");
+  projectImage.src = "https://img.icons8.com/ios-filled/50/menu-squared-2.png";
+  projectImage.height = 24;
+  projectImage.width = 24;
+  const projectName = document.createElement("h3");
+  projectName.textContent = projectItem.projectName;
+
+  const editProjectBtn = document.createElement("img")
+  editProjectBtn.src = "https://img.icons8.com/material-rounded/24/menu-2.png";
+  editProjectBtn.height = 24;
+  editProjectBtn.width = 24;
+
+  //append to the dom
+  const projectHeadline = document.querySelector(".projects")
+  projectHeadline.appendChild(project)
+  project.appendChild(leftProjectContent)
+  leftProjectContent.appendChild(projectImage)
+  leftProjectContent.appendChild(projectName)
+  project.appendChild(editProjectBtn)
+});
+
+}
+
+export function viewTodosinProject() {
+  const projectBtns = document.querySelectorAll(".project");
+  const projectName = document.querySelector(".project-name");
+
+  projectBtns.forEach((projectBtn) => {
+    projectBtn.addEventListener("click", () => {
+      //if any project is clicked, then display the project name and its todo contents on the main content
+      let index = projectList.findIndex((project) => project.id == projectBtn.dataset.id)
+      projectName.textContent = projectList[index].projectName;
+
+      viewTodos(projectBtn.dataset.id)
+      
+    })
+  })
+
+  function viewTodos(projectIdentifier) {
+    //refresh the todos first before adding 
+
+    const taskContentDiv = document.querySelector(".taskContent")
+    taskContentDiv.innerHTML = ""
+    let index = projectList.findIndex((project) => projectIdentifier == project.id);
+
+    //for each todo item in the project,display it on main content
+    projectList[index].taskList.forEach((todoItem) => {
+      const taskDiv = document.createElement("div")
+      taskDiv.classList.add("task")
+
+      const leftTaskContentDiv = document.createElement("div")
+      leftTaskContentDiv.classList.add("left-task-content")
+      const completeBtn = document.createElement("img");
+      completeBtn.src = "https://img.icons8.com/forma-thin-filled-sharp/24/unchecked-radio-button.png"
+      completeBtn.width = 24;
+      completeBtn.height = 24;
+      const taskName = document.createElement("p")
+      taskName.textContent = todoItem.title;
+
+      const rightTaskContentDiv = document.createElement("div")
+      rightTaskContentDiv.classList.add("right-task-content")
+      const dueDate = document.createElement("p")
+      dueDate.classList.add("due-date");
+      dueDate.textContent = todoItem.dueDate;
+      const importantBtn = document.createElement("img");
+      importantBtn.src = "https://img.icons8.com/ios/50/star--v1.png"
+      importantBtn.width = 24;
+      importantBtn.height = 24;
+      const editBtn = document.createElement("img")
+      editBtn.src = "https://img.icons8.com/ios-glyphs/30/menu-2.png"
+      editBtn.width = 24;
+      editBtn.height = 24;
+
+      //append to dom
+      taskContentDiv.appendChild(taskDiv)
+      taskDiv.appendChild(leftTaskContentDiv)
+      taskDiv.appendChild(rightTaskContentDiv)
+      leftTaskContentDiv.appendChild(completeBtn)
+      leftTaskContentDiv.appendChild(taskName)
+      rightTaskContentDiv.appendChild(dueDate)
+      rightTaskContentDiv.appendChild(importantBtn)
+      rightTaskContentDiv.appendChild(editBtn)
+    })
+  }
+
+
+}
+

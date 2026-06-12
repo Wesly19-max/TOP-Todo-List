@@ -79,13 +79,18 @@ main {
 }
 .project-name-card {
   border:black solid 1px;
-  height:50px;
-  width:75px;
+  margin:20px 40px;
+  background-color: #1E90FF;
+  border-radius:10px;
 }
 
 .main {
-  border:1px solid red;
+ /* border:1px solid red;*/
+  display:grid;
+  grid-template-rows: 1fr 3fr;
 }
+
+
 
 
 .project {
@@ -94,6 +99,37 @@ main {
   margin-top:10px;
 }
 
+.project:hover {
+  background-color: lightgray;
+  cursor:pointer;
+}
 .left-project-content {
   display:flex;
+}
+
+.task {
+  display:flex;
+  justify-content: space-between;
+  border:1px solid black;
+  border-radius: 10px;
+  margin:8px 40px;
+}
+
+.left-task-content, .right-task-content {
+  display:flex;
+
+}
+
+.left-task-content *, .right-task-content * {
+  margin:10px;
+}
+
+.due-date {
+  border:1px solid black;
+  border-radius:10px;
+  padding:5px;
+}
+
+.left-task-content * {
+  align-items: center;
 }

@@ -64,8 +64,25 @@ export function viewTodosinProject() {
       completeBtn.src = "https://img.icons8.com/forma-thin-filled-sharp/24/unchecked-radio-button.png"
       completeBtn.width = 24;
       completeBtn.height = 24;
+
       const taskName = document.createElement("p")
       taskName.textContent = todoItem.title;
+
+      //if completeBtn is clicked, then make the complete property true of the todo item 
+      completeBtn.addEventListener("click", () => { 
+        todoItem.toggleComplete() ;
+        if (todoItem.isComplete == true) { 
+          completeBtn.src="https://img.icons8.com/color/48/checked-radio-button--v2.png";
+          completeBtn.width = 24; 
+          completeBtn.height = 24; 
+          
+          taskName.innerHTML = `<del>${todoItem.title}</del>`
+        }else { 
+          completeBtn.src = "https://img.icons8.com/forma-thin-filled-sharp/24/unchecked-radio-button.png";
+          taskName.textContent = todoItem.title; 
+        } 
+      })
+      
 
       const rightTaskContentDiv = document.createElement("div")
       rightTaskContentDiv.classList.add("right-task-content")
@@ -76,11 +93,24 @@ export function viewTodosinProject() {
       importantBtn.src = "https://img.icons8.com/ios/50/star--v1.png"
       importantBtn.width = 24;
       importantBtn.height = 24;
+
+      importantBtn.addEventListener("click",() => {
+        todoItem.toggleImportance();
+        if (todoItem.isImportant == true) { 
+          importantBtn.src="https://img.icons8.com/emoji/48/star-emoji.png";
+          importantBtn.width = 24; 
+          importantBtn.height = 24; 
+        }else { 
+          importantBtn.src = "https://img.icons8.com/ios/50/star--v1.png"; 
+        } 
+      })
+      
       const editBtn = document.createElement("img")
       editBtn.src = "https://img.icons8.com/ios-glyphs/30/menu-2.png"
       editBtn.width = 24;
       editBtn.height = 24;
 
+      //if edit button is clicked, 
       //append to dom
       taskContentDiv.appendChild(taskDiv)
       taskDiv.appendChild(leftTaskContentDiv)

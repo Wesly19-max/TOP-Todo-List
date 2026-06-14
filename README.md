@@ -6,6 +6,8 @@ Requirements v4
 - [X]view all todos in each project
 - [ ]add functionality that expands todo item when you edit it
 - [ ]delete a todo
+- [ ]add a todo in project
+- [X]add project
 - [ ] integrate local storage in your project
 - [X] create separate js modules
 

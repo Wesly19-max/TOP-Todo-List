@@ -1,6 +1,11 @@
-import { projectList } from "./app.js";
+import { projectList,addProject} from "./app.js";
 
 export function viewProjects() {
+  //refresh dom first
+  const projectHeadline = document.querySelector(".projects")
+  projectHeadline.innerHTML = "";
+
+  //for each project, display it with a card ui
   projectList.forEach((projectItem) => {
   const project = document.createElement("div")
   project.classList.add("project")
@@ -21,7 +26,7 @@ export function viewProjects() {
   editProjectBtn.width = 24;
 
   //append to the dom
-  const projectHeadline = document.querySelector(".projects")
+  
   projectHeadline.appendChild(project)
   project.appendChild(leftProjectContent)
   leftProjectContent.appendChild(projectImage)
@@ -29,8 +34,55 @@ export function viewProjects() {
   project.appendChild(editProjectBtn)
 });
 
+  viewAddProject();
+  
+
 }
 
+export function viewAddProject() {
+  
+  
+  //after every end of project, add an add project button
+  const projectHeadline = document.querySelector(".projects")
+  const addProjectBtn = document.createElement("div")
+  //addProjectBtn.classList.add("project")
+
+  const addProjectBtnImg = document.createElement("img");
+  addProjectBtnImg.src= "https://img.icons8.com/ios/50/add--v1.png"
+
+  const addProjectBtnText = document.createElement("h3");
+  addProjectBtnText.textContent = "Add New Project"
+
+  projectHeadline.appendChild(addProjectBtn)
+  addProjectBtn.appendChild(addProjectBtnImg)
+  addProjectBtn.appendChild(addProjectBtnText)
+
+
+//if this add project button is clicked, then a dialog appears where user is asked a form to type in new
+  addProjectBtn.addEventListener("click", () => {
+    dialog.showModal();
+  })
+
+}
+
+const dialog = document.querySelector("dialog");
+const confirmBtn = document.querySelector(".confirmBtn")
+//name for the project with options add and cancel below
+  confirmBtn.addEventListener("click",(event) => {
+    event.preventDefault();
+
+    const projectName = document.querySelector("#project-name").value;
+
+    addProject(projectName);
+
+    document.querySelector("form").reset();
+
+    //display new projects list on ui
+    viewProjects();
+
+    dialog.close();
+
+  })
 export function viewTodosinProject() {
   const projectBtns = document.querySelectorAll(".project");
   const projectName = document.querySelector(".project-name");

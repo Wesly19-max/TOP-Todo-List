@@ -69,7 +69,7 @@ class Project {
   }
 }
 
-function addProject(projectName) {
+export function addProject(projectName) {
   let newProject = new Project(projectName);
   projectList.push(newProject);
   displayTodos();
@@ -100,6 +100,7 @@ projectList[2].addTodoItem("run","for 5 days",2026,6,29,false,false);
 
 //show all todos
 function displayTodos() {
+  console.log(projectList);
   projectList.forEach((project) => {
     console.log(project.projectName);
     project.taskList.forEach((todoItem) => {

@@ -8,6 +8,8 @@ Requirements v4
 - [ ]delete a todo
 - [ ]add a todo in project
 - [X]add project
+- [X]edit project name
+- [ ]delete project
 - [ ] integrate local storage in your project
 - [X] create separate js modules
 

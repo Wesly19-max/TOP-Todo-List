@@ -69,7 +69,7 @@
           </div>
         </div>
       </div>
-      <dialog>
+      <dialog class="add-project-dialog">
         <form method="dialog">
           <p>
             <input type="text" placeholder="Enter a project name" id="project-name" name="project-name">
@@ -77,6 +77,17 @@
           <div class="dialog-buttons">
             <button formmethod="dialog"> Cancel</button>
             <input type= "submit" class="confirmBtn">
+          </div>
+        </form>
+      </dialog>
+      <dialog class="edit-project-name">
+        <form method="dialog" class="edit-project-form">
+          <p>
+            <input type="text" placeholder="Enter new project name" id="edit-project-name" name="project-name">
+          </p>
+          <div class="dialog-buttons">
+            <button formmethod = "dialog">Cancel</button>
+            <input type="submit" class="renameBtn" value="Rename">
           </div>
         </form>
       </dialog>

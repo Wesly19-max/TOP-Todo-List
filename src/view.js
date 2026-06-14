@@ -1,5 +1,7 @@
 import { projectList,addProject} from "./app.js";
 
+const editProjectNameDialog = document.querySelector(".edit-project-name")
+
 export function viewProjects() {
   //refresh dom first
   const projectHeadline = document.querySelector(".projects")
@@ -32,12 +34,28 @@ export function viewProjects() {
   leftProjectContent.appendChild(projectImage)
   leftProjectContent.appendChild(projectName)
   project.appendChild(editProjectBtn)
+
+  //add functionality to edit project name for each project
+  editProjectBtn.addEventListener("click",() => {
+    //IF menu container of a project card is CLICKED
+
+    editProjectNameDialog.dataset.activeProjectId = projectItem.id
+    editProjectNameDialog.showModal();
+    //DISPLAY a dialog box to edit project name with buttons cancel, rename and delete 
+    //renameProject(projectItem.id)
+    
+    //add functionality to  delete project
+  })
 });
 
   viewAddProject();
   viewTodosinProject();
 
+
 }
+
+const addProjectDialog = document.querySelector(".add-project-dialog");
+const confirmBtn = document.querySelector(".confirmBtn")
 
 export function viewAddProject() {
   
@@ -60,13 +78,12 @@ export function viewAddProject() {
 
 //if this add project button is clicked, then a dialog appears where user is asked a form to type in new
   addProjectBtn.addEventListener("click", () => {
-    dialog.showModal();
+    addProjectDialog.showModal();
   })
 
 }
 
-const dialog = document.querySelector("dialog");
-const confirmBtn = document.querySelector(".confirmBtn")
+
 //name for the project with options add and cancel below
   confirmBtn.addEventListener("click",(event) => {
     event.preventDefault();
@@ -80,9 +97,35 @@ const confirmBtn = document.querySelector(".confirmBtn")
     //display new projects list on ui
     viewProjects();
 
-    dialog.close();
+    addProjectDialog.close();
 
   })
+
+//if Rename button is clicked in project menu container
+const renameBtn = document.querySelector(".renameBtn");
+
+renameBtn.addEventListener("click", (event) => {
+    console.log("rename clicked")
+    event.preventDefault();
+
+    const projectItemId = editProjectNameDialog.dataset.activeProjectId
+    //get the value of the user input in project name
+    const editProjectNameValue = document.querySelector("#edit-project-name").value;
+
+    //edit project name property of the project class instance
+    const index = projectList.findIndex((project) => project.id == projectItemId)
+    projectList[index].editProject(editProjectNameValue); 
+
+    document.querySelector(".edit-project-form").reset();
+    //refresh..View the projects again
+    viewProjects();
+
+    editProjectNameDialog.close()
+  })
+   
+
+
+
 export function viewTodosinProject() {
   const projectBtns = document.querySelectorAll(".project");
   const projectName = document.querySelector(".project-name");
@@ -94,11 +137,14 @@ export function viewTodosinProject() {
       projectName.textContent = projectList[index].projectName;
 
       viewTodos(projectBtn.dataset.id)
+      //viewAddTodos()
       
     })
   })
 
-  function viewTodos(projectIdentifier) {
+}
+
+function viewTodos(projectIdentifier) {
     //refresh the todos first before adding 
 
     const taskContentDiv = document.querySelector(".taskContent")
@@ -172,9 +218,13 @@ export function viewTodosinProject() {
       rightTaskContentDiv.appendChild(dueDate)
       rightTaskContentDiv.appendChild(importantBtn)
       rightTaskContentDiv.appendChild(editBtn)
+
+      //add menu container event listener for each todo
+
+        //if edit is clicked, then display a dialog box to edit the current todo
+
+        //if delete is clicked, then delete the todo
     })
   }
 
-
-}
-
+  //display an "add new todo" button in each project

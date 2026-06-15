@@ -1,4 +1,8 @@
 # TOP_TodoList
+Requirements v5
+- edge case: if no date was being put, then just state as no due date
+
+
 
 Requirements v4
 - [X] learn about how date-fns can be integrated in your project
@@ -6,7 +10,7 @@ Requirements v4
 - [X]view all todos in each project
 - [ ]add functionality that expands todo item when you edit it
 - [ ]delete a todo
-- [ ]add a todo in project
+- [X]add a todo in project
 - [X]add project
 - [X]edit project name
 - [X]delete project

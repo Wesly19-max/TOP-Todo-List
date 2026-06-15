@@ -1,3 +1,4 @@
+
 import { projectList,addProject} from "./app.js";
 
 const editProjectNameDialog = document.querySelector(".edit-project-name")
@@ -150,11 +151,13 @@ export function viewTodosinProject() {
       projectName.textContent = projectList[index].projectName;
 
       viewTodos(projectBtn.dataset.id)
-      //viewAddTodos()
+      viewAddTodos(projectBtn.dataset.id)
+      console.log("viewAddTodos")
       
     })
   })
 
+  
 }
 
 function viewTodos(projectIdentifier) {
@@ -240,4 +243,51 @@ function viewTodos(projectIdentifier) {
     })
   }
 
-  //display an "add new todo" button in each project
+//display an "add new todo" button in each project
+function viewAddTodos(projectIdentifier) {
+  
+  const addTodoDialog = document.querySelector(".add-todo-dialog")
+  const taskContentDiv = document.querySelector(".taskContent")
+  const addTodoBtn = document.createElement("div")
+
+  const addTodoBtnImg = document.createElement("img");
+  addTodoBtnImg.src= "https://img.icons8.com/ios/50/add--v1.png"
+
+  const addTodoBtnText = document.createElement("h3");
+  addTodoBtnText.textContent = "Add New Todo"
+
+  taskContentDiv.appendChild(addTodoBtn)
+  addTodoBtn.appendChild(addTodoBtnImg)
+  addTodoBtn.appendChild(addTodoBtnText)
+
+
+//if this add todo button is clicked, then a dialog appears where user is asked a form to type in new
+  addTodoBtn.addEventListener("click", () => {
+    addTodoDialog.dataset.activeProjectId = projectIdentifier;
+    addTodoDialog.showModal();
+  })
+}
+
+const addTodoBtn = document.querySelector(".addTodoBtn")
+addTodoBtn.addEventListener("click", () => {
+  //get the values of title,description and date
+    const titleInput = document.querySelector("#title").value
+    const descriptionInput = document.querySelector("#description").value
+    const dateInput = document.querySelector("#date").value
+
+    const yearDate = parseInt(dateInput.slice(0,4));
+    const monthDate = parseInt(dateInput.slice(5,7));
+    const dayDate = parseInt(dateInput.slice(8,10));
+  //add a new todo into the taskList array of that specific project
+  const addTodoDialog = document.querySelector(".add-todo-dialog")
+  const projectItemId = addTodoDialog.dataset.activeProjectId;
+  const index = projectList.findIndex((project) => project.id == projectItemId)
+  console.log(index)
+  projectList[index].addTodoItem(titleInput,descriptionInput,yearDate,monthDate,dayDate,false,false)
+
+  const addTodoDialogForm = document.querySelector(".add-todo-dialog-form");
+  addTodoDialogForm.reset();
+  //view Todos
+  viewTodos(projectItemId)
+  viewAddTodos(projectItemId)
+})

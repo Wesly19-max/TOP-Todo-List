@@ -123,6 +123,19 @@ renameBtn.addEventListener("click", (event) => {
     editProjectNameDialog.close()
   })
    
+const deleteProjectBtn = document.querySelector(".delete-project")
+
+deleteProjectBtn.addEventListener("click", () => {
+  //find the clicked project
+  const projectItemId = editProjectNameDialog.dataset.activeProjectId;
+  //delete the clicked project
+  const index = projectList.findIndex((project) => project.id == projectItemId)
+  projectList[index].removeProject();
+
+  viewProjects();
+
+  editProjectNameDialog.close()
+})
 
 
 

@@ -8,8 +8,8 @@ Requirements v4
 - [X] learn about how date-fns can be integrated in your project
 - [X] view all projects
 - [X]view all todos in each project
-- [ ]add functionality that expands todo item when you edit it
-- [ ]delete a todo
+- [X]add functionality that expands todo item when you edit it
+- [X]delete a todo
 - [X]add a todo in project
 - [X]add project
 - [X]edit project name

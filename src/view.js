@@ -328,8 +328,15 @@ editTodoBtn.addEventListener("click", () => {
 const deleteTodoBtn = document.querySelector(".deleteTodoBtn");
 deleteTodoBtn.addEventListener("click", () => {
   //find the todo item that was clicked
-  console.log("delete")
-  //delete that specific todo item on that project
+  const projectItemId = editTodoDialog.dataset.activeProjectId;
+  const taskId = editTodoDialog.dataset.activeTodoId;
 
+  const projectIndex = projectList.findIndex((project) => project.id == projectItemId)
+  const taskIndex = projectList[projectIndex].taskList.findIndex((todoItem) => taskId == todoItem.id)
+  console.log(`${projectIndex} ${taskIndex}`)
+  //delete that specific todo item on that project
+  projectList[projectIndex].taskList[taskIndex].removeItem();
   //view todos
+  viewTodos(projectItemId)
+  viewAddTodos(projectItemId);
 })

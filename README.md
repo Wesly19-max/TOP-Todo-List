@@ -1,6 +1,6 @@
 # TOP_TodoList
 Requirements v5
-- edge case: if no date was being put, then just state as no due date
+- [ ] edge case: if no date was being put, then just state as no due date
 
 
 

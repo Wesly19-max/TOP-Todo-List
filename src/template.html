@@ -108,9 +108,22 @@
           </div>
         </form>
       </dialog>
-      <dialog class="edit-todo">
-        <form method="dialog">
+      <dialog class="edit-todo-dialog">
+        <form method="dialog" class="edit-todo-form">
+          <label for="edit-title">Title:</label>
+          <input type="text" id="edit-title" name="edit-title" placeholder="What to do?">
 
+          <label for="edit-description">Description:</label>
+          <input type="text" id="edit-description" name="edit-description" placeholder="e.g. I'm just gonna procrastinate, aren't I?">
+
+          <label for="edit-date">Date:</label>
+          <input type="date" id="edit-date" name="edit-date">
+          <div class="dialog-buttons">
+            <button formmethod = "dialog">Cancel</button>
+            <input type="submit" class="editTodoBtn" value="Edit">
+            <button class="deleteTodoBtn"> Delete</button>
+
+          </div>
         </form>
       </dialog>
     </div>

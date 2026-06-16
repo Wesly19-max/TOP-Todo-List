@@ -1,4 +1,5 @@
 
+import { endOfDayWithOptions } from "date-fns/fp";
 import { projectList,addProject} from "./app.js";
 
 const editProjectNameDialog = document.querySelector(".edit-project-name")
@@ -235,11 +236,18 @@ function viewTodos(projectIdentifier) {
       rightTaskContentDiv.appendChild(importantBtn)
       rightTaskContentDiv.appendChild(editBtn)
 
+      const editTodoDialog = document.querySelector(".edit-todo-dialog")
       //add menu container event listener for each todo
-
+      editBtn.addEventListener("click", () => {
+        editTodoDialog.dataset.activeProjectId = projectList[index].id;
+        editTodoDialog.dataset.activeTodoId = todoItem.id;
+        console.log(editTodoDialog.dataset.activeProjectId )
+        console.log(editTodoDialog.dataset.activeTodoId)
         //if edit is clicked, then display a dialog box to edit the current todo
-
+        editTodoDialog.showModal();
         //if delete is clicked, then delete the todo
+      })
+        
     })
   }
 
@@ -290,4 +298,38 @@ addTodoBtn.addEventListener("click", () => {
   //view Todos
   viewTodos(projectItemId)
   viewAddTodos(projectItemId)
+})
+
+const editTodoBtn = document.querySelector(".editTodoBtn");
+const editTodoDialog = document.querySelector(".edit-todo-dialog")
+editTodoBtn.addEventListener("click", () => {
+  //get values of title,description and date
+    const titleInput = document.querySelector("#edit-title").value
+    const descriptionInput = document.querySelector("#edit-description").value
+    const dateInput = document.querySelector("#edit-date").value
+
+    const yearDate = parseInt(dateInput.slice(0,4));
+    const monthDate = parseInt(dateInput.slice(5,7));
+    const dayDate = parseInt(dateInput.slice(8,10));
+  //edit the clicked todo at that specific project
+  const projectItemId = editTodoDialog.dataset.activeProjectId;
+  const taskId = editTodoDialog.dataset.activeTodoId;
+
+  const projectIndex = projectList.findIndex((project) => project.id == projectItemId)
+  const taskIndex = projectList[projectIndex].taskList.findIndex((todoItem) => taskId == todoItem.id)
+  console.log(`${projectIndex} ${taskIndex}`)
+  projectList[projectIndex].taskList[taskIndex].edit(titleInput,descriptionInput,yearDate,monthDate,dayDate);
+  document.querySelector(".edit-todo-form").reset();
+  //view todos
+  viewTodos(projectItemId)
+  viewAddTodos(projectItemId);
+})
+
+const deleteTodoBtn = document.querySelector(".deleteTodoBtn");
+deleteTodoBtn.addEventListener("click", () => {
+  //find the todo item that was clicked
+  console.log("delete")
+  //delete that specific todo item on that project
+
+  //view todos
 })

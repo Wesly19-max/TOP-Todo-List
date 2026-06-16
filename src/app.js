@@ -39,7 +39,19 @@ class TodoItem {
   edit(newTitle,newDescription,year,month,day) {
     this.title = newTitle;
     this.description = newDescription;
-    this.dueDate = format(new Date(year,month-1,day),"yyyy-MM-dd");
+    // 1. Check if all three parts are strictly numbers
+    if (typeof year === "number" && typeof month === "number" && typeof day === "number") {
+      const date = new Date(year, month - 1, day);
+      
+      // 2. Verify the date is valid and didn't auto-roll over (e.g., Feb 30 becoming March 2)
+      if (!isNaN(date.getTime()) && date.getMonth() === month - 1 && date.getDate() === day) {
+        this.dueDate = format(date, "yyyy-MM-dd");
+      } else {
+        this.dueDate = "No Due Date";
+      }
+    } else {
+      this.dueDate = "No Due Date";
+    }
     displayTodos();
   }
   

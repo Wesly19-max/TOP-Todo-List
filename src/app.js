@@ -100,10 +100,7 @@ export function addProject(projectName) {
 
 }
 
-//default project is the project where todo items go to that doesn't have a specific project
-addProject("Default");
-addProject("school")
-addProject("exercise")
+
 
 //add a todo item to default project if you didn't add it from project
 function addTodoItem(title,description,year,month,day,isImportant,isComplete) {
@@ -114,12 +111,6 @@ function addTodoItem(title,description,year,month,day,isImportant,isComplete) {
 
 
 
-
-addTodoItem("task 1", "do it now",2026,5,22,true,false);
-addTodoItem("task 2", "haircut",2026,5,23,true,false);
-addTodoItem("buy grocery","milk",2026,5,24,false,false);
-projectList[2].addTodoItem("run","for 5 days",2026,6,29,false,false);
-// defaultProject[0].removeItem();
 
 
 //show all todos
@@ -132,22 +123,49 @@ function displayTodos() {
     })
   })
 
+  //convert projectList to string
+  const myJSON = JSON.stringify(projectList)
+  //save the array into local storage
+  localStorage.setItem("todoProjects",myJSON)
 }
 
 
-    
-  
-
-console.log(displayTodos()) 
 
 
+function loadData() {
+  //if saved data is not empty then parse the data 
+  const savedData = localStorage.getItem("todoProjects")
+  if (savedData !== null) {
+    const parsedProjects = JSON.parse(savedData)
 
+    parsedProjects.forEach((parsedProject) => {
 
-/* task1.toggleComplete();
-console.log(task1)
-task1.changeDescription("new description haha");
-console.log(task1);
-task1.changeDueDate("06162006");
-console.log(task1);
-task1.changeTitle("project1");
-console.log(task1) */
+      //create brand new proper project isntance using saved name
+      const restoredProject = new Project(parsedProject.projectName)
+
+      restoredProject.id = parsedProject.id;
+
+      parsedProject.taskList.forEach((parsedTodo) => {
+        restoredProject.addTodoItem(
+          parsedTodo.title,
+          parsedTodo.description,
+          parseInt(parsedTodo.dueDate.slice(0,4)),
+          parseInt(parsedTodo.dueDate.slice(5,7)),
+          parseInt(parsedTodo.dueDate.slice(8,10)),
+          parsedTodo.isImportant,
+          parsedTodo.isComplete
+        );
+
+        // Ensure the restored todo keeps its original UUID
+        const lastTodoIndex = restoredProject.taskList.length - 1;
+        restoredProject.taskList[lastTodoIndex].id = parsedTodo.id;
+      });
+
+      projectList.push(restoredProject);
+    })
+  }else {
+    addProject("default")
+  }
+}
+
+loadData();

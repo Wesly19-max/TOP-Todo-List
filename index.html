@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+<script defer src="main.js"></script></head>
+<body>
+  <header>
+    <h1>TODO LIST</h1>
+  </header>
+  <main>
+    <div class="sidebar">
+      <div class="headline">
+        <h1>Home</h1>
+        <hr>
+        <div class="option">
+          <img width="27" height="27" src="https://img.icons8.com/fluency/48/inbox.png" alt="inbox"/>
+          <h3>All tasks</h3>
+        </div>
+        <div class="option">
+          <img width="27" height="27" src="https://img.icons8.com/fluency/48/today.png" alt="today"/>
+          <h3>Today</h3>
+        </div>
+        <div class="option">
+          <img width="27" height="27" src="https://img.icons8.com/color/48/calendar-7.png" alt="calendar-7"/>
+          <h3>Next 7 days</h3>
+        </div>
+        <div class="option">
+          <img width="27" height="27" src="https://img.icons8.com/emoji/48/star-emoji.png" alt="star-emoji"/>
+          <h3>Important</h3>
+        </div>
+      </div>
+      <div class="headline-of-projects">
+        <div>
+          <h1>Projects</h1>
+          <hr>
+        </div>
+        <div class="projects">
+          
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="project-name-card">
+        <h1 class="project-name"></h1>
+      </div>
+      <div class="taskContent">
+        
+        
+        
+      </div>
+      <dialog class="add-project-dialog">
+        <form method="dialog">
+          <p>
+            <input type="text" placeholder="Enter a project name" id="project-name" name="project-name">
+          </p>
+          <div class="dialog-buttons">
+            <button formmethod="dialog"> Cancel</button>
+            <input type= "submit" class="confirmBtn">
+          </div>
+        </form>
+      </dialog>
+      <dialog class="edit-project-name">
+        <form method="dialog" class="edit-project-form">
+          <p>
+            <input type="text" placeholder="Enter new project name" id="edit-project-name" name="project-name">
+          </p>
+          <div class="dialog-buttons">
+            <button formmethod = "dialog">Cancel</button>
+            <input type="submit" class="renameBtn" value="Rename">
+            <button class="delete-project">Delete</button>
+          </div>
+        </form>
+      </dialog>
+      <dialog class="add-todo-dialog">
+        <form method="dialog" class="add-todo-dialog-form">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" placeholder="What to do?">
+
+          <label for="description">Description:</label>
+          <input type="text" id="description" name="description" placeholder="e.g. I'm just gonna procrastinate, aren't I?">
+
+          <label for="date">Date:</label>
+          <input type="date" id="date" name="date">
+          <div class="dialog-buttons">
+            <button formmethod = "dialog">Cancel</button>
+            <input type="submit" class="addTodoBtn" value="Add">
+          </div>
+        </form>
+      </dialog>
+      <dialog class="edit-todo-dialog">
+        <form method="dialog" class="edit-todo-form">
+          <label for="edit-title">Title:</label>
+          <input type="text" id="edit-title" name="edit-title" placeholder="What to do?">
+
+          <label for="edit-description">Description:</label>
+          <input type="text" id="edit-description" name="edit-description" placeholder="e.g. I'm just gonna procrastinate, aren't I?">
+
+          <label for="edit-date">Date:</label>
+          <input type="date" id="edit-date" name="edit-date">
+          <div class="dialog-buttons">
+            <button formmethod = "dialog">Cancel</button>
+            <input type="submit" class="editTodoBtn" value="Edit">
+            <button class="deleteTodoBtn"> Delete</button>
+
+          </div>
+        </form>
+      </dialog>
+    </div>
+  </main>
+  <footer>
+    Icons by Icons8 | 2026 © Wesly
+  </footer>
+</body>
+</html>

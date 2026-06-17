@@ -23,6 +23,7 @@ export function viewProjects() {
   projectImage.width = 24;
   const projectName = document.createElement("h3");
   projectName.textContent = projectItem.projectName;
+  
 
   const editProjectBtn = document.createElement("img")
   editProjectBtn.src = "https://img.icons8.com/material-rounded/24/menu-2.png";
@@ -69,11 +70,14 @@ export function viewAddProject() {
 
   const addProjectBtnImg = document.createElement("img");
   addProjectBtnImg.src= "https://img.icons8.com/ios/50/add--v1.png"
+  addProjectBtnImg.width = 24;
+  addProjectBtnImg.height = 24;
 
   const addProjectBtnText = document.createElement("h3");
   addProjectBtnText.textContent = "Add New Project"
 
   projectHeadline.appendChild(addProjectBtn)
+  addProjectBtn.classList.add("addBtn");
   addProjectBtn.appendChild(addProjectBtnImg)
   addProjectBtn.appendChild(addProjectBtnText)
 
@@ -260,11 +264,14 @@ function viewAddTodos(projectIdentifier) {
 
   const addTodoBtnImg = document.createElement("img");
   addTodoBtnImg.src= "https://img.icons8.com/ios/50/add--v1.png"
+  addTodoBtnImg.width = 24;
+  addTodoBtnImg.height = 24;
 
   const addTodoBtnText = document.createElement("h3");
   addTodoBtnText.textContent = "Add New Todo"
 
   taskContentDiv.appendChild(addTodoBtn)
+  addTodoBtn.classList.add("addBtn")
   addTodoBtn.appendChild(addTodoBtnImg)
   addTodoBtn.appendChild(addTodoBtnText)
 

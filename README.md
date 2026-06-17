@@ -1,7 +1,9 @@
 # TOP_TodoList
 Requirements v5
 - [X] edge case: if no date was being put, then just state as no due date
-
+- [ ]display the description on todo card
+- [X]fix the ui
+- [ ] fix form ui
 
 
 Requirements v4
